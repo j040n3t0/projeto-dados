@@ -92,7 +92,7 @@ Responsáveis pelo projeto:
 
 ## 😯 Como contribuir para o projeto
 
-👋🏽 [Entre em contato!](LINK)
+👋🏽 [Entre em contato!](https://t.me/j040n3t0)
 
 <!-- ## 📝 Licença -->
 
