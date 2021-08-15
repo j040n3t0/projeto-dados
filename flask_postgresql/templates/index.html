@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <title>Flask APP</title>
+        <meta charset="utf-8"/>
+        <!-- AJAX import -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    <body>
+    
+        <div>
+            <button id="createTable">Criar Tabela</button>
+            <p><p><p>
+        </div>
+        <div>
+            <input id="input_name" placeholder="insira seu nome"><p>
+            <input id="input_idade" placeholder="insira sua idade"><p>
+            <button id="insertData">Inserir Dados</button>
+            <p>
+        </div>
+        <div>
+            <button id="showData">Lista Dados</button>
+            <p><p><p>
+        </div>
+        <div>
+            <button id="deleteData">Excluir Dados</button>
+            <p><p><p>
+        </div>
+        
+        <p><p>
+        <div id="resultado"></div>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("#createTable").ready(function(){
+                $("#createTable").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "/createTable",
+                        data: {
+                        },
+                        success: function (data){
+                            document.getElementById("resultado").innerHTML = data.output;
+                            console.log(data.output);
+                        },
+                        error: function () {
+                            console.log();
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("#insertData").ready(function(){
+                $("#insertData").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "/insertData",
+                        data: {
+                            "nome": document.getElementById('input_name').value,
+                            "idade": document.getElementById('input_idade').value
+                        },
+                        success: function (data){
+                            document.getElementById("resultado").innerHTML = data.output;
+                            console.log(data.output);
+                        },
+                        error: function () {
+                            console.log();
+                        }
+                    });
+                });
+            });
+        </script>
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("#showData").ready(function(){
+                $("#showData").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "/showData",
+                        data: {
+                        },
+                        success: function (data){
+                            document.getElementById("resultado").innerHTML = data.output;
+                            console.log(data.output);
+                        },
+                        error: function () {
+                            console.log();
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript">
+            $("#deleteData").ready(function(){
+                $("#deleteData").click(function(){
+                    $.ajax({
+                        type: "POST",
+                        url: "/deleteData",
+                        data: {
+                        },
+                        success: function (data){
+                            document.getElementById("resultado").innerHTML = data.output;
+                            console.log(data.output);
+                        },
+                        error: function () {
+                            console.log();
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>
