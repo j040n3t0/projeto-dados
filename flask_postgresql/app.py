@@ -3,7 +3,7 @@ from types import MethodType
 from flask import Flask, render_template, jsonify, request
 import psycopg2
 
-# Cria a instancia do App Flask
+# Cria a instancia do App Flask 
 app = Flask(__name__)
 
 def bd_connection():# Update connection string information 
