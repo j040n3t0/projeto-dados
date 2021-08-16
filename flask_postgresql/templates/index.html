@@ -2,6 +2,10 @@
     <head>
         <title>Flask APP</title>
         <meta charset="utf-8"/>
+
+         <!-- set icon -->
+         <link rel="shortcut icon" href="static/images/favicon.ico" />
+
         <!-- AJAX import -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         
@@ -83,8 +87,13 @@
                         data: {
                         },
                         success: function (data){
-                            document.getElementById("resultado").innerHTML = data.output;
-                            console.log(data.output);
+                            var lista_dados = "";
+                            for (i in data.output) {
+                                var temp = data.output[i] + "<p>";
+                                lista_dados = lista_dados + temp
+                            }
+                            console.log(lista_dados);
+                            document.getElementById("resultado").innerHTML = lista_dados;
                         },
                         error: function () {
                             console.log();
