@@ -52,40 +52,34 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 ## 🚀 Como executar o projeto
 
 1. Clone o repositorio projeto-dados
-```bash
-https://github.com/j040n3t0/projeto-dados
-```
-1. Execute o compose da pasta projeto-dados/flask_postgresql
-2. Debezium / Kafka
-3. Apache Flink
-4. Elasticsearch / python engine
-5. Druid
-6. Superset
+
+2. Execute o compose da pasta projeto-dados/flask_postgresql
+
+    **Troubleshoot**
+
+    Referência: wal_level [Must be Logical](https://stackoverflow.com/questions/59416301/how-to-change-postgres-docker-image-wal-level-on-setup)
+
+3. Execute o compose da pasta debezium_kafka
+    * criar arquivo de configuração do Kafka Connect: postgresql-connect.json
+    * ```$ curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @./postgresql-connect.json ```
+
+    **Troubleshoot**
+
+    Referência: https://stackoverflow.com/questions/62150625/couldnt-read-data-from-json-config-file-using-curl
+
+4. Apache Flink
+5. Elasticsearch / python engine
+6. Druid
+7. Superset
 
 
 ### 🎲 Rodando o Backend (Servidor Dev)
 
 ```bash
-# Clone este repositório
-$ git clone https://github.com/j040n3t0/el-tinder.git
-
-# Acesse a pasta do projeto no terminal/cmd
-$ cd el-tinder
-
-# Iniciando container Docker
-$ docker-compose up
-
-# iniciando o serviço NodeJs
-$  yarn dev;
-
-# O serviço XXXX inciará na porta:XXXX - acesse http://localhost:XXXX
+# Escrever aqui os comandos para replicar o projeto
 ```
 
 ### 🧭 Rodando a aplicação web (Front End)
-
-🚧 Em construção... 🚧
-
-### 📱Rodando a aplicação mobile
 
 🚧 Em construção... 🚧
 
@@ -106,4 +100,13 @@ Responsáveis pelo projeto:
 </h4>
 
 [vscode]: https://code.visualstudio.com/
-[docker]: 
+[docker]: https://www.docker.com/
+[flask]: https://flask.palletsprojects.com/en/2.0.x/
+[postgresql]: https://www.postgresql.org/
+[debezium]: https://debezium.io/
+[kafka]: https://kafka.apache.org/
+[flink]: https://flink.apache.org/
+[druid]: https://druid.apache.org/
+[superset]: https://superset.apache.org/
+[elasticsearch]: https://www.elastic.co/pt/what-is/elasticsearch
+[python-kafka]: https://github.com/dpkp/kafka-python
