@@ -42,21 +42,25 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Apache Superset][superset]
 - [Docker][Docker]
 
-## 🚀 Como executar o projeto
-
-1. Execute o arquivo flask_compose
-2. Debezium / Kafka
-3. Apache Flink
-4. Elasticsearch / python engine
-5. Druid
-6. Superset
-
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
 - [Docker][Docker]
 - Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode], apesar de não ser obrigatório.
+
+## 🚀 Como executar o projeto
+
+1. Clone o repositorio projeto-dados
+```bash
+https://github.com/j040n3t0/projeto-dados
+```
+1. Execute o compose da pasta projeto-dados/flask_postgresql
+2. Debezium / Kafka
+3. Apache Flink
+4. Elasticsearch / python engine
+5. Druid
+6. Superset
 
 
 ### 🎲 Rodando o Backend (Servidor Dev)
