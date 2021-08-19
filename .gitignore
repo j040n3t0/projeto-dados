@@ -1,3 +1,5 @@
 # Arquivos ignorados no projeto
 
 **/postgres-data
+**/elastic-data
+**/somefile.txt
