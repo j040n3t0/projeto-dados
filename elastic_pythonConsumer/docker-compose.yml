@@ -1,0 +1,35 @@
+version: '3'
+services:
+  # https://www.elastic.co/guide/en/elastic-stack-get-started/current/get-started-docker.html
+  # criar volume: docker volume create kibana-poc-volume
+  elastic_cache:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.0
+    container_name: elastic_cache
+    environment:
+      - node.name=es01
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      # - xpack.security.audit.enabled=true
+      # - xpack.security.audit.logfile.events.emit_request_body=true
+    ulimits:
+      memlock: -1
+      nofile: 65536
+      fsize: -1
+      as: -1
+    volumes:
+      - ./elastic-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+  python_consumer:
+    container_name: python_consumer
+    build: .
+    volumes:
+      - ./code:/code
+    depends_on:
+      - elastic_cache
+    extra_hosts:
+     - "host.docker.internal:172.17.0.1"
