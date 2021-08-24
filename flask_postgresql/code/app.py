@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 def bd_connection():# Update connection string information 
     # Documentacao: https://docs.microsoft.com/pt-br/azure/postgresql/flexible-server/connect-python
-    host = "192.168.1.136"
+    host = "postgres_prod"
     dbname = "test"
     user = "test"
     password = "test"
