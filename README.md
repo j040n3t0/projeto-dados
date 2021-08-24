@@ -49,6 +49,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
 - [Docker][Docker]
+- Docker-compose versão 1.29.2 - [How to](https://docs.docker.com/compose/install/)
 - Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode], apesar de não ser obrigatório.
 
 ## 🚀 Como executar o projeto
