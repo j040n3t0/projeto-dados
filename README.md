@@ -11,7 +11,7 @@ Nesse projeto será demonstrado como criar uma pipelines para ingestão, process
 - PostegreSQL (Banco de dados que receberá os dados da aplicação)
 - Debezium (Aplicação responsável por coletar os dados do banco de dados e enviar para um tópico do Kafka)
 - Apache Kafka (Camada de fila de dados/eventos)
-- Apache Flink (...)
+- Apache Flink (Enriquecimento e validação de dados)
 - Apache Druid (Agregação e Armazenamento)
 - Elasticsearch (Motor de busca/Armazenamento)
 - Aplicação Python Consumer (Aplicação responsável por ler os eventos do Kafka e enviar para o Elasticsearch)
@@ -19,20 +19,22 @@ Nesse projeto será demonstrado como criar uma pipelines para ingestão, process
 - Docker (Gestão dos containers do projeto)
 
 ### Diagrama v1
-![el-notifier](apoio/projeto_dados.png)
+![projeto-dados](apoio/projeto_dados.png)
 
 ### Web
-<h4 align="center">
-    🚧 Em construção... 🚧
-    Tela de demonstração do mecanismo de busca
-</h4>
+
+Exemplo da página Web que fará a comunicação com o PostgreSQL
+
+![projeto-dados](apoio/webpage.png)
+
+Referência do código: [W3Docs](https://www.w3docs.com/tools/editor/5795)
 
 ## 🛠 Tecnologias
 
 As seguintes ferramentas foram usadas na construção do projeto:
 
 - [Python Flask][flask]
-- [PostegreSQL][postgresql]
+- [PostgreSQL][postgresql]
 - [Debezium][debezium]
 - [Apache Kafka][kafka]
 - [Apache Flink][flink]
@@ -53,35 +55,67 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 1. Clone o repositorio projeto-dados
 
+    ```$ git clone https://github.com/j040n3t0/projeto-dados.git```
+
 2. Execute o compose da pasta projeto-dados/flask_postgresql
+
+    ```bash
+    $ cd projeto-dados/flask_postgresql
+    $ docker-compose up
+    ```
+
+    Feito isso você já conseguirá acessar a página do frontend no seguinte endereço: **http://SEU_IP:5000**
 
     **Troubleshoot**
 
     Referência: wal_level [Must be Logical](https://stackoverflow.com/questions/59416301/how-to-change-postgres-docker-image-wal-level-on-setup)
 
 3. Execute o compose da pasta debezium_kafka
-    * criar arquivo de configuração do Kafka Connect: postgresql-connect.json
-    * ```$ curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @./postgresql-connect.json ```
+
+    ```bash
+    $ cd projeto-dados/debezium_kafka
+    $ docker-compose up
+    $ curl -i -X POST -H "Accept:application/json" -H "Content-Type:application/json" localhost:8083/connectors/ -d @./postgresql-connect.json
+    ```
+
+    Nesse ponto foi criado o conector (Debezium) que enviará os dados do PostgreSQL para o tópico **fullfillment.public.inventory** no Kafka
 
     **Troubleshoot**
 
     Referência: https://stackoverflow.com/questions/62150625/couldnt-read-data-from-json-config-file-using-curl
 
 4. Apache Flink
+
+    🚧 Pendente! 🚧
+
 5. Elasticsearch / python engine
+
+    ```bash
+    $ cd projeto-dados/elastic_pythonConsumer
+    $ docker-compose up
+    ```
+
+    Nessa etapa do projeto o container do Python já deverá estar lendo do tópico **fullfillment.public.inventory** no Kafka e enviando os dados para o Elasticsearch! O elasticsearch estará acessível no seguinte endereço: **http://SEU_IP:9200**
+
 6. Druid
+
+    🚧 Pendente! 🚧
+
 7. Superset
 
+    ```bash
+    $ cd projeto-dados/apache_superset
+    $ docker-compose -f docker-compose-non-dev.yml up
+    # Esse plugin é necessário para permitir que o superset conecte em bases Elasticsearch
+    $ docker exec <id/nomecontainer> bash -c "pip install elasticsearch-dbapi"
+    ```
 
-### 🎲 Rodando o Backend (Servidor Dev)
+    Nessa etapa do projeto você tem a integração completa de todos os componentes abordados anteriormente! O Superset estará acessível no seguinte endereço: **http://SEU_IP:8088** com usuário **admin** e senha **admin**. 
+    
+    Agora é só se divertir analisando seu ambiente e montando Dashboards comparativas com o Superset, como no exemplo abaixo podemos ver se as bases de dados do (Cache) Elasticsearch e (BD Prod) PostgreSQL estão com os mesmo registros.
 
-```bash
-# Escrever aqui os comandos para replicar o projeto
-```
+    ![superset](apoio/superset.png)
 
-### 🧭 Rodando a aplicação web (Front End)
-
-🚧 Em construção... 🚧
 
 ## 🧠 Idealizadores
 
@@ -96,7 +130,7 @@ Responsáveis pelo projeto:
 
 
 <h4 align="center"> 
-	🚧 api-note-elasticStack 1.0 🚀 em construção... 🚧
+	🚧 Projeto para análise de dados 1.0 🚀 em construção... 🚧
 </h4>
 
 [vscode]: https://code.visualstudio.com/
