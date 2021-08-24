@@ -27,7 +27,7 @@ services:
   connect:
     image: debezium/connect
     ports:
-     - 8084:8084
+     - 8084:8083
     links:
      - kafka
     depends_on:
