@@ -255,9 +255,11 @@
                         } 
                         if (data.output.length == 0) {
                             lista_dados = "Tabela vazia...";
-                        } else {
-                            lista_dados = data.output;
-                        }
+                        } 
+                        if (lista_dados.length == 0) {
+                            lista_dados = "Tabela não existe...";
+                        } 
+
                         console.log(lista_dados);
                         document.getElementById("resultado").innerHTML = lista_dados;
                     },
