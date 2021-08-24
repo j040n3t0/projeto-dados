@@ -3,7 +3,7 @@ version: '3'
 services:
   web:
     build: .
-    name: webserver
+    container_name: webserver
     ports:
       - "5000:5000"
     volumes:
@@ -16,7 +16,7 @@ services:
       - "host.docker.internal:172.17.0.1"
 
   db:
-    name: postgres_prod
+    container_name: postgres_prod
     environment:
       POSTGRES_USER: test
       POSTGRES_PASSWORD: test
