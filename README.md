@@ -92,6 +92,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
     ```bash
     $ cd projeto-dados/elastic_pythonConsumer
+    $ mkdir elastic-data
     $ docker-compose up
     ```
 
