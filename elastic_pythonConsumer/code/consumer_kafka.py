@@ -10,7 +10,7 @@ def writeLog(log):
 
 def sendElastic(kafkaData):
     writeLog("Entrou na funcao de envia de logs para Elastic")
-    url = "http://192.168.1.136:9200/pessoa_kafka/_doc/"+str(kafkaData['id'])
+    url = "http://164.68.116.3:9200/pessoa_kafka/_doc/"+str(kafkaData['id'])
 
     payload = json.dumps(kafkaData)
     headers = {
