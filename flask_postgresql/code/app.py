@@ -46,7 +46,7 @@ def lerDados():
         # Print all rows
         dados = []
         for row in rows:
-            dados.append(("Data row = (%s, %s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))))
+            dados.append(("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))))
         # Clean up
         conn.commit()
         cursor.close()
