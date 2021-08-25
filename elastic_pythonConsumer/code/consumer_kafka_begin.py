@@ -31,8 +31,6 @@ def setKafkaConnection():
             'fullfillment.public.inventory', 
             # Informa o servidor Kafka
             bootstrap_servers='host.docker.internal:9094',
-            # Informa a qual grupo o consumer pertence
-            group_id='python-consumer',
             # Comecar a ler do inicio
             auto_offset_reset='earliest'
         )
