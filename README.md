@@ -69,7 +69,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
     **Troubleshoot**
 
-    Referência: wal_level [Must be Logical](https://stackoverflow.com/questions/59416301/how-to-change-postgres-docker-image-wal-level-on-setup)
+    Referências:
+    - wal_level [Must be Logical](https://stackoverflow.com/questions/59416301/how-to-change-postgres-docker-image-wal-level-on-setup)
+    - Captcha [codepen](https://codepen.io/manishjanky/pen/eRNKLL)
+    
 
 3. Execute o compose da pasta debezium_kafka
 
