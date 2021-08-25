@@ -101,7 +101,12 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 6. Druid
 
-    🚧 Pendente! 🚧
+    ```bash
+    $ cd projeto-dados/apache_druid
+    $ docker-compose up
+    ```
+
+    ![druid](apoio/druid.png)
 
 7. Superset
 
