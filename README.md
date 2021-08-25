@@ -119,6 +119,13 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
     ![superset](apoio/superset.png)
 
 
+## 💡 Ideias de melhorias
+
+- [ ] Colocar todos os serviços na mesma rede, isso evitará publicar portas desnecessárias
+- [ ] Serviços que não possuem senha, adicionar camada de autenticação (Nginx)
+- [ ] Padronizar nome dos containers
+- [ ] Remover/alterar senhas padrões
+
 ## 🧠 Idealizadores
 
 Responsáveis pelo projeto:
