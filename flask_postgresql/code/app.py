@@ -19,13 +19,13 @@ def bd_connection():# Update connection string information
     print("Connection established")
     return conn
 
-def inserirDado(nome, idade):
+def inserirDado(nome, idade, ip_address):
     try:
         conn = bd_connection()
         cursor = conn.cursor()
         # Insert some data into the table
-        cursor.execute("INSERT INTO inventory (nome, idade) VALUES (%s, %s);", (nome, idade))
-        print("Inserted 3 rows of data")
+        cursor.execute("INSERT INTO inventory (nome, idade, ip_address) VALUES (%s, %s, %s);", (nome, idade, ip_address))
+        print("Inserted 1 rows of data")
         # Clean up
         conn.commit()
         cursor.close()
@@ -41,12 +41,12 @@ def lerDados():
 
     try:
         # Fetch all rows from table
-        cursor.execute("SELECT * FROM inventory ORDER BY id DESC LIMIT 10;")
+        cursor.execute("SELECT id, nome, idade FROM inventory ORDER BY id DESC LIMIT 10;")
         rows = cursor.fetchall()
         # Print all rows
         dados = []
         for row in rows:
-            dados.append(("Data row = (%s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))))
+            dados.append(("Data row = (%s, %s, %s, %s)" %(str(row[0]), str(row[1]), str(row[2]))))
         # Clean up
         conn.commit()
         cursor.close()
@@ -62,7 +62,7 @@ def criarTabela():
         cursor = conn.cursor()
 
         # Create a table
-        cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, nome VARCHAR(50), idade INTEGER);")
+        cursor.execute("CREATE TABLE inventory (id serial PRIMARY KEY, nome VARCHAR(50), idade INTEGER, ip_address VARCHAR(50));")
         print("Finished creating table")
 
         # Clean up
@@ -117,8 +117,9 @@ def insertData():
     print(">> inserir dados")
     nome = request.form['nome']
     idade = request.form['idade']
+    ip_adrres = request.remote_addr
     try:
-        message = inserirDado(nome, idade)
+        message = inserirDado(nome, idade, ip_adrres)
         return jsonify({'output' : message})
     except:
         print(">> error ao inserir dados")
