@@ -41,7 +41,7 @@ def lerDados():
 
     try:
         # Fetch all rows from table
-        cursor.execute("SELECT * FROM inventory;")
+        cursor.execute("SELECT * FROM inventory ORDER BY id DESC LIMIT 10;")
         rows = cursor.fetchall()
         # Print all rows
         dados = []
