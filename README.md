@@ -114,6 +114,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
     ![druid](apoio/druid.png)
 
+    **Troubleshoot**
+
+    Remover volumes do docker: [Stackoverflow](https://stackoverflow.com/questions/51817245/docker-error-cannot-create-container-for-service-no-such-file-or-dir)
+
 7. Superset
 
     ```bash
