@@ -114,10 +114,6 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
     ![druid](apoio/druid.png)
 
-    **Troubleshoot**
-
-    Remover volumes do docker: [Stackoverflow](https://stackoverflow.com/questions/51817245/docker-error-cannot-create-container-for-service-no-such-file-or-dir)
-
 7. Superset
 
     ```bash
@@ -142,6 +138,11 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 - [ ] Serviços que não possuem senha, adicionar camada de autenticação (Nginx)
 - [ ] Padronizar nome dos containers
 - [ ] Remover/alterar senhas padrões
+
+## Troubleshoot Geral
+
+1. Docker
+    - Remover volumes do docker: [Stackoverflow](https://stackoverflow.com/questions/51817245/docker-error-cannot-create-container-for-service-no-such-file-or-dir)
 
 ## 🧠 Idealizadores
 
