@@ -12,7 +12,7 @@ def setKafkaConnection():
         # Informa o topico
             'fullfillment.public.inventory', 
             # Informa o servidor Kafka
-            bootstrap_servers='192.168.1.136:9094',
+            bootstrap_servers='kafka:9092',
             # Informa a qual grupo o consumer pertence
             group_id='python-consumer'
         )

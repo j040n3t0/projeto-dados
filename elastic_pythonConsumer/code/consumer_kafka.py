@@ -10,7 +10,7 @@ def writeLog(log):
 
 def sendElastic(kafkaData):
     writeLog("Entrou na funcao de envia de logs para Elastic")
-    url = "http://164.68.116.3:9200/pessoa_kafka/_doc/"+str(kafkaData['id'])
+    url = "http://elastic_cache:9200/pessoa_kafka/_doc/"+str(kafkaData['id'])
 
     payload = json.dumps(kafkaData)
     headers = {
@@ -30,7 +30,7 @@ def setKafkaConnection():
         # Informa o topico
             'fullfillment.public.inventory', 
             # Informa o servidor Kafka
-            bootstrap_servers='host.docker.internal:9094',
+            bootstrap_servers='kafka:9092',
             # Informa a qual grupo o consumer pertence
             group_id='python-consumer'
         )

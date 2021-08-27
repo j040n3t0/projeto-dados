@@ -2,7 +2,7 @@
   "name": "inventory-connector",
   "config": {
     "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
-    "database.hostname": "192.168.1.136",
+    "database.hostname": "postgres_prod",
     "plugin.name": "pgoutput",
     "database.port": "5432",
     "database.user": "test",

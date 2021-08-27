@@ -12,8 +12,8 @@ services:
       - db
     ports:
       - 5000:5000
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   db:
     container_name: postgres_prod
@@ -30,5 +30,10 @@ services:
       - "wal_level=logical"
     volumes:
       - ./postgres-data:/var/lib/postgresql/data
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
+
+networks:
+  net_projetodados:
+    external:
+      name: custom_network

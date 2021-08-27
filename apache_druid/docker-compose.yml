@@ -30,7 +30,7 @@ volumes:
 
 services:
   postgres:
-    container_name: postgres
+    container_name: postgres_druid
     image: postgres:latest
     volumes:
       - metadata_data:/var/lib/postgresql/data
@@ -38,19 +38,21 @@ services:
       - POSTGRES_PASSWORD=FoolishPassword
       - POSTGRES_USER=druid
       - POSTGRES_DB=druid
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   # Need 3.5 or later for container nodes
   zookeeper:
-    container_name: zookeeper
+    container_name: zookeeper_druid
     image: zookeeper:3.5
     environment:
       - ZOO_MY_ID=1
+    networks:
+      - net_projetodados
 
   coordinator:
     image: apache/druid:0.21.1
-    container_name: coordinator
+    container_name: coordinator_druid
     volumes:
       - druid_shared:/opt/shared
       - coordinator_var:/opt/druid/var
@@ -63,12 +65,12 @@ services:
       - coordinator
     env_file:
       - environment
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   broker:
     image: apache/druid:0.21.1
-    container_name: broker
+    container_name: broker_druid
     volumes:
       - broker_var:/opt/druid/var
     depends_on: 
@@ -81,12 +83,12 @@ services:
       - broker
     env_file:
       - environment
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   historical:
     image: apache/druid:0.21.1
-    container_name: historical
+    container_name: historical_druid
     volumes:
       - druid_shared:/opt/shared
       - historical_var:/opt/druid/var
@@ -100,12 +102,12 @@ services:
       - historical
     env_file:
       - environment
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   middlemanager:
     image: apache/druid:0.21.1
-    container_name: middlemanager
+    container_name: middlemanager_druid
     volumes:
       - druid_shared:/opt/shared
       - middle_var:/opt/druid/var
@@ -119,12 +121,12 @@ services:
       - middleManager
     env_file:
       - environment
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
 
   router:
     image: apache/druid:0.21.1
-    container_name: router
+    container_name: router_druid
     volumes:
       - router_var:/opt/druid/var
     depends_on:
@@ -137,5 +139,10 @@ services:
       - router
     env_file:
       - environment
-    extra_hosts:
-     - "host.docker.internal:172.17.0.1"
+    networks:
+      - net_projetodados
+
+networks:
+  net_projetodados:
+    external:
+      name: custom_network
