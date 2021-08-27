@@ -54,9 +54,12 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 ## 🚀 Como executar o projeto
 
-1. Clone o repositorio projeto-dados
+1. Clone o repositorio projeto-dados e crie a rede de comunicação interna dos containers
 
-    ```$ git clone https://github.com/j040n3t0/projeto-dados.git```
+    ```bash
+    $ git clone https://github.com/j040n3t0/projeto-dados.git
+    $ docker network create custom_network
+    ```
 
 2. Execute o compose da pasta projeto-dados/flask_postgresql
 
