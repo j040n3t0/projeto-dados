@@ -134,9 +134,9 @@ Antes de começar, você vai precisar ter instalado em sua máquina as seguintes
 
 - [X] Colocar captcha para evitar engraçadinhos
 - [X] Limitar a listagem dos registros aos últimos 10
-- [ ] Colocar todos os serviços na mesma rede, isso evitará publicar portas desnecessárias
+- [X] Colocar todos os serviços na mesma rede, isso evitará publicar portas desnecessárias
 - [ ] Serviços que não possuem senha, adicionar camada de autenticação (Nginx)
-- [ ] Padronizar nome dos containers
+- [X] Padronizar nome dos containers
 - [ ] Remover/alterar senhas padrões
 
 ## Troubleshoot Geral
